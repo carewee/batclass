@@ -55,7 +55,6 @@ int main(){
     // checking fleet object
     //
     
-    /* // uncomment this part once you are done debugging above code
      fleet myFleet;
      
      myFleet.deployFleet(); // fleet is deployed at random locations
@@ -69,5 +68,5 @@ int main(){
      cout << "there was no ship at userShot location.\n";
      
      cout << "myFleet\'s status is: "; myFleet.printFleet();
-     */
+
 }

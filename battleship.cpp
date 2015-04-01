@@ -108,3 +108,46 @@ void ship::printShip() const{
         cout << "The ship was sunk!" << endl;
 }
 
+
+// FLEET FUNCTIONS
+
+void fleet::deployFleet(){
+    // deploys the ships in random locations
+    // of the ocean
+    
+    for(int i = 0; i < 5 ; i++){
+        location tmp;
+        tmp.pick();
+        ships[i].setLocation(tmp);
+    }
+}
+bool fleet::operational() const{
+    // returns true if at least
+    // one ship in the fleet is not sunk
+    
+    for(int i = 0; i < fleetSize; i++) {
+        if(ship[i].match() == false)
+            return true;
+    }
+    return false;
+}
+
+bool fleet::isHitNSink(const location &) {
+    // returns true if there was a deployed
+    // ship at this location (hit) and sinks it
+    // otherwise returns false (miss)
+    
+    for(int i = 0; i < 5; i++) {
+        if(ship[i].match(loc)==true) {
+            ship[i].sink();
+            return true;
+        } 
+    } 
+    return false;
+}
+
+void fleet::printFleet() const{
+    // prints out locations of ships in fleet
+    
+    
+}
