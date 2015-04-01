@@ -76,7 +76,7 @@ ship::ship(){
     // void constructor
     
     sunk = false;
-    }
+}
 
 bool ship::match(location& userShot) const {
     // returns true if this location matches
@@ -93,11 +93,13 @@ void ship::sink(){
 
 void ship::setLocation(const location& mySpot) {
     // deploys the ship at the specified location
+    
     loc = mySpot;
-    }
+}
 
 void ship::printShip() const{
     // prints location and status of the ship
+    
     loc.print();
     cout << "Status of ship: ";
     if (sunk == true)
@@ -106,5 +108,3 @@ void ship::printShip() const{
         cout << "The ship was sunk!" << endl;
 }
 
-//    location loc;
-//    bool sunk;
