@@ -14,12 +14,15 @@ using std::cout; using std::cin; using std::endl;
 
 location::location(){
     // void constructor
+    
     x = -1;
+    y = -1;
 
 }
 
 void location::pick(){
     // picks a random location
+    
     srand(int(time(0)));
     x = rand() % 5 + 1;
     y = rand() % 5 + 1;
@@ -52,6 +55,7 @@ void location::fire(){
 
 void location::print() const {
     // prints location in format "a1"
+    
     cout << "The ship is at: " << x  << y << endl;
 }
 
@@ -70,35 +74,36 @@ bool compare(location userShot, location mySpot){
 
 ship::ship(){
     // void constructor
+    
     sunk = false;
     }
 
-bool ship::match(location&) const {
+bool ship::match(location& userShot) const {
     // returns true if this location matches
     // the ship's location
     
-    if (userShot.x == mySpot.x && userShot.y == mySpot.y)
-        return true;
-    else
-        return false;
+    return compare(loc, userShot);
 }
 
 void ship::sink(){
     // sets sunk to true
+    
     sunk = true;
 }
 
-void ship::setLocation(const location ) {
+void ship::setLocation(const location& mySpot) {
     // deploys the ship at the specified location
-    cout << "The ship is at: " << mySpot.x << mySpot.y << endl;
+    loc = mySpot;
+    }
+
+void ship::printShip() const{
+    // prints location and status of the ship
+    loc.print();
     cout << "Status of ship: ";
-    if (sunk == false)
+    if (sunk == true)
         cout << "The ship is still alive!" << endl;
     else
         cout << "The ship was sunk!" << endl;
-}
-void ship::printShip() const{
-    // prints location and status of the ship
 }
 
 //    location loc;
