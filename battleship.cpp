@@ -108,7 +108,7 @@ bool fleet::operational() const{
     // one ship in the fleet is not sunk
     
     for(int i = 0; i < fleetSize; i++) {
-        if(ships[i].match(userShot) == false)
+        if(ships[i].isSunk() == true)
             return true;
     }
     return false;
@@ -121,7 +121,7 @@ bool fleet::isHitNSink(const location &userShot) {
     
     for(int i = 0; i < 5; i++) {
         if(ships[i].match(userShot)) {
-            if (ships[i] == false)
+            if (ships[i].isSunk() == false)
                 ships[i].sink();
                 return true;
         }
