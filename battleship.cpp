@@ -125,12 +125,14 @@ bool fleet::isHitNSink(const location &userShot) {
                 ships[i].sink();
                 return true;
         }
-    } 
+    }
     return false;
 }
 
 void fleet::printFleet() const{
     // prints out locations of ships in fleet
     
-    
+    for(int i = 0; i < 5; i++) {
+        ships[i].printShip();
+    }
 }
