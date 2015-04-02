@@ -108,7 +108,7 @@ bool fleet::operational() const{
     // one ship in the fleet is not sunk
     
     for(int i = 0; i < fleetSize; i++) {
-        if(ships[i].isSunk() == true)
+        if(ships[i].isSunk() == false)
             return true;
     }
     return false;
