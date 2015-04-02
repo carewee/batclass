@@ -14,7 +14,7 @@ public:
     void print() const; // prints location in format "a1"
     
     // returns true if the two locations match
-    friend bool compare(location, location);
+    friend bool compare(const location, const location);
     
 private:
     static const int fieldSize=5; // the field (ocean) is fieldSize X fieldSize
@@ -26,7 +26,7 @@ private:
 class ship{
 public:
     ship(); // void constructor, sets sunk=false
-    bool match(location&) const; // returns true if this location matches
+    bool match(const location&) const; // returns true if this location matches
     // the ship's location
     bool isSunk() const {return sunk;} // checks to see if the ship is sunk
     void sink();       // sets "sunk" member variable of the ship to true

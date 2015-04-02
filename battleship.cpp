@@ -59,7 +59,7 @@ void location::print() const {
     cout << "The ship is at: " << x  << y << endl;
 }
 
-bool compare(location userShot, location mySpot){
+bool compare(const location userShot, const location mySpot){
     // returns true if the two locations match
         
         if (userShot.x == mySpot.x && userShot.y == mySpot.y)
@@ -78,7 +78,7 @@ ship::ship(){
     sunk = false;
 }
 
-bool ship::match(location& userShot) const {
+bool ship::match(const location& userShot) const {
     // returns true if this location matches
     // the ship's location
     
