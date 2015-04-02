@@ -138,7 +138,7 @@ bool fleet::isHitNSink(const location &) {
     // otherwise returns false (miss)
     
     for(int i = 0; i < 5; i++) {
-        if(ships[i].match(loc) ==true) {
+        if(ships[i].match() ==true) {
             ships[i].sink();
             return true;
         } 
