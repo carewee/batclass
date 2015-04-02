@@ -132,13 +132,13 @@ bool fleet::operational() const{
     return false;
 }
 
-bool fleet::isHitNSink(const location &) {
+bool fleet::isHitNSink(const location &userShot) {
     // returns true if there was a deployed
     // ship at this location (hit) and sinks it
     // otherwise returns false (miss)
     
     for(int i = 0; i < 5; i++) {
-        if(ships[i].match() ==true) {
+        if(ships[i].match(userShot) == true) {
             ships[i].sink();
             return true;
         } 
