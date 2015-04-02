@@ -125,7 +125,6 @@ bool fleet::isHitNSink(const location &userShot) {
                 ships[i].sink();
                 return true;
         }
-        return false;
     } 
     return false;
 }
