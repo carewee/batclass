@@ -25,25 +25,7 @@ void location::pick(){
     
     srand(int(time(0)));
     x = rand() % 5 + 1;
-    y = rand() % 5 + 1;
-    
-    switch (y) {
-        case 1:
-            y = 'a';
-            break;
-        case 2:
-            y = 'b';
-            break;
-        case 3:
-            y = 'c';
-            break;
-        case 4:
-            y = 'd';
-            break;
-        case 5:
-            y = 'e';
-            break;
-    }
+    y = 'a' + rand() % 5;
 }
 
 void location::fire(){
@@ -139,9 +121,11 @@ bool fleet::isHitNSink(const location &userShot) {
     
     for(int i = 0; i < 5; i++) {
         if(ships[i].match(userShot)) {
-            ships[i].sink();
-            return true;
-        } 
+            if (ships[i] == false)
+                ships[i].sink();
+                return true;
+        }
+        return false;
     } 
     return false;
 }
