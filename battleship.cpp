@@ -84,7 +84,7 @@ void ship::printShip() const{
     
     loc.print();
     cout << "Status of ship: ";
-    if (sunk == true)
+    if (sunk == false)
         cout << "The ship is still alive!" << endl;
     else
         cout << "The ship was sunk!" << endl;
