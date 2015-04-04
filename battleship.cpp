@@ -93,16 +93,30 @@ void ship::printShip() const{
 
 // FLEET FUNCTIONS
 
-void fleet::deployFleet(){
+void fleet::deployFleet() {
     // deploys the ships in random locations
     // of the ocean
     
-    for(int i = 0; i < 5 ; i++){
+    for(int i = 0; i < 5 ; i++) {
         location tmp;
-        tmp.pick();
+        
+        while(true) {
+            tmp.pick();
+            
+            bool overlap = false;
+            for(int j = 0; j < i; ++j) {
+                if(ships[i].match(tmp)) {
+                    overlap = true;
+                    break;
+                }
+            }
+            if(overlap == false)
+                break;
+        }
         ships[i].setLocation(tmp);
     }
 }
+
 bool fleet::operational() const{
     // returns true if at least
     // one ship in the fleet is not sunk
