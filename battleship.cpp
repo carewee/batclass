@@ -22,7 +22,6 @@ location::location(){
 
 void location::pick(){
     // picks a random location
-    
 
     x = rand() % 5 + 1;
     y = 'a' + rand() % 5;
@@ -96,7 +95,7 @@ void ship::printShip() const{
 void fleet::deployFleet() {
     // deploys the ships in random locations
     // of the ocean
-    srand(int(time(0)));
+    srand(int(time(nullptr)));
     
     for(int i = 0; i < 5 ; i++) {
         location tmp;
@@ -108,7 +107,6 @@ void fleet::deployFleet() {
             for(int j = 0; j < i; ++j) {
                 if(ships[i].match(tmp)) {
                     overlap = true;
-                    break;
                 }
             }
             if(overlap == false)
