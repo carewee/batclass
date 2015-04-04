@@ -23,7 +23,7 @@ location::location(){
 void location::pick(){
     // picks a random location
     
-    srand(int(time(0)));
+    srand(int(time(nullptr)));
     x = rand() % 5 + 1;
     y = 'a' + rand() % 5;
 }
