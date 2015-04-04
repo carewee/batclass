@@ -43,9 +43,9 @@ int main(){
      else
          cout << "myShip's location does not match user input.\n";
      
-     if(!myShip.isSunk()){
-     cout << "myship is not sunk yet, sinking it.\n";
-     myShip.sink();
+     if(myShip.match(userShot)){
+         cout << "myship is not sunk yet, sinking it.\n";
+         myShip.sink();
      }
      
      cout << "myShip\'s status is: "; myShip.printShip();
