@@ -135,9 +135,10 @@ bool fleet::isHitNSink(const location &userShot) {
     
     for(int i = 0; i < 5; i++) {
         if(ships[i].match(userShot)) {
-            if (ships[i].isSunk() == false)
+            if (ships[i].isSunk() == false) {
                 ships[i].sink();
                 return true;
+            }
         }
     }
     return false;
