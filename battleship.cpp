@@ -16,13 +16,12 @@ location::location(){
     // void constructor
     
     x = -1;
-    y = -1;
-
+    y = 'X';
 }
 
 void location::pick(){
     // picks a random location
-
+    srand(int(time(nullptr)));
     x = rand() % 5 + 1;
     y = 'a' + rand() % 5;
 }
@@ -30,24 +29,25 @@ void location::pick(){
 void location::fire(){
     // asks the user to input coordinates of the next shot
     
-    cout << "Where will you take your next shot? (Coordinates 1-5 a-e separated by a space): ";
-    cin >> x >> y;
+    cout << "Where will you take your next shot? (Coordinates a-e 1-5 separated by a space): ";
+    cin >> y >> x;
 }
 
 void location::print() const {
     // prints location in format "a1"
     
-    cout << "The ship is at: " << x  << y << endl;
+    cout << "The ship is at: " << y  << x << endl;
+    
 }
 
 bool compare(const location userShot, const location mySpot){
     // returns true if the two locations match
-        
-        if (userShot.x == mySpot.x && userShot.y == mySpot.y)
-            return true;
-        else
-            return false;
-
+    
+    if (userShot.x == mySpot.x && userShot.y == mySpot.y)
+        return true;
+    else
+        return false;
+    
 }
 
 
@@ -95,25 +95,20 @@ void ship::printShip() const{
 void fleet::deployFleet() {
     // deploys the ships in random locations
     // of the ocean
-    srand(int(time(nullptr)));
     
-    for(int i = 0; i < 5 ; i++) {
-        location tmp;
-        
-        while(true) {
-            tmp.pick();
-            
-            bool overlap = false;
-            for(int j = 0; j < i; ++j) {
-                if(ships[i].match(tmp)) {
-                    overlap = true;
-                }
-            }
-            if(overlap == false)
-                break;
+    int i = 0;
+    location tmp;
+    do {
+        tmp.pick();
+        if (check(tmp) == -1) {
+            ships[i].setLocation(tmp);
+            i = i + 1;
         }
-        ships[i].setLocation(tmp);
+        else
+            tmp.pick();
     }
+    while (i < fleetSize);
+
 }
 
 bool fleet::operational() const{
@@ -149,4 +144,16 @@ void fleet::printFleet() const{
     for(int i = 0; i < 5; i++) {
         ships[i].printShip();
     }
+}
+
+int fleet::check(const location &userShot) const {
+// returns index of the ship
+// that matches location
+// -1 if none match
+    
+    for (int i = 0; i < fleetSize; ++i)
+        if (ships[i].match(userShot)) {
+            return i;
+        }
+    return -1;
 }
